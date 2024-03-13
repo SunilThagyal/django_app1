@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .signup-form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+        .signup-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .clickable{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="signup-form">
+                    <h2>Sign Up</h2>
+                    <form action="{% url 'signup' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="inputFirstName" class="form-label">First Name</label>
+                                <input type="text" name="first_name" class="form-control" id="inputFirstName" placeholder="Enter your first name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputLastName" class="form-label">Last Name</label>
+                                <input type="text" name="last_name" class="form-control" id="inputLastName" placeholder="Enter your last name">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPhoneNumber" class="form-label">Phone Number</label>
+                            <input type="tel" name="phone" class="form-control" id="inputPhoneNumber" placeholder="Enter your phone number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter your password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputAddress" class="form-label">Address</label>
+                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Enter your address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputAddress2" class="form-label">Address 2</label>
+                            <input type="text" name="address2" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="inputCity" class="form-label">City</label>
+                                <input type="text" name="city" class="form-control" id="inputCity">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputState" class="form-label">State</label>
+                                <select id="inputState" name="state" class="form-select">
+                                    <option selected>Choose...</option>
+                                    {% for state in states%}
+                                <option>{{state}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputZip" name="zip" class="form-label">Zip</label>
+                                <input type="text" class="form-control" id="inputZip">
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">Check me out</label>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                        <a href="{% url 'login' %}">
+                            <label class="form-check-label clickable">Already have account? login now</label>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
